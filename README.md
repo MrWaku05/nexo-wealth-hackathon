@@ -23,7 +23,7 @@ Abre `index.html` con doble clic en cualquier navegador reciente. No se requiere
 - No usa IA, no crea cuentas de inversión, no realiza transacciones y no ofrece asesoría personalizada regulada.
 - Los parámetros educativos NO provienen de un modelo validado.
 
-## Siguientes pasos en Codex
+## Siguientes pasos (continuamos desde ChatGPT)
 1. Crear un proyecto React/Vite o seguir con HTML estático; conservar las funciones de cálculo de perfil y asignación independientes de UI.
 2. Conectar datos de mercado y construir una estrategia cuantitativa con hipótesis previa, reglas de entrada/salida, timing y costos.
 3. Validar su backtest frente al benchmark indicado por los organizadores: KN US Equity Core con código en Lab o SPY en plataforma.
@@ -57,3 +57,10 @@ Este directorio es un **repositorio Git local independiente del repositorio púb
 Ejecuta pruebas con `python -m unittest discover -s tests -v`. El archivo `benchmark_summary.json` se versiona como **resumen del benchmark**, no como rendimiento de nuestra estrategia. Los originales grandes y secretos se excluyen en `.gitignore`.
 
 **Seguridad:** el documento FMP que contiene una clave se ha compartido previamente fuera de un gestor de secretos. Revoca/rota esa clave y restringe los permisos del documento y de la carpeta antes de desplegar servicios o abrir el repositorio a colaboradores. No pegues claves en un chat ni en el navegador.
+
+## Piloto sintético de control de volatilidad
+- `scripts/benchmark_risk_pilot.py` implementa un experimento **reproducible**, sin dependencias externas, usando los retornos del benchmark, una ventana pasada de 60 sesiones, rebalanceo mensual y costo de negociación hipotético.
+- `research/EXPERIMENTO_PILOTO.md` documenta fórmula, límites, supuestos y restricciones.
+- Ejecuta con `--zip <ruta-KN-US-Equity-Core.zip>`; el reporte se guarda localmente como `research/benchmark_risk_pilot_LOCAL.json`.
+- **No es una estrategia invertible ni el backtest oficial de KaxaNuk.** El índice no es comprable directamente y todavía no hemos evaluado una cartera con valores individuales.
+- `tests/test_benchmark_risk_pilot.py` comprueba límites, reproducibilidad y una prueba básica de ausencia de mirada futura.

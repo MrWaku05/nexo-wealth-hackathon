@@ -36,3 +36,6 @@ Thumbs.db
 node_modules/
 dist/
 build/
+
+# Informes locales derivados del benchmark; no publicarlos sin autorización
+research/*_LOCAL.json
