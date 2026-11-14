@@ -36,3 +36,7 @@ Thumbs.db
 node_modules/
 dist/
 build/
+
+# Precios individuales FMP (no subir datasets ni claves)
+/data/private/
+research/sector_etf_result_LOCAL.json
