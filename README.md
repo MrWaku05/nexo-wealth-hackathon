@@ -23,7 +23,7 @@ Abre `index.html` con doble clic en cualquier navegador reciente. No se requiere
 - No usa IA, no crea cuentas de inversión, no realiza transacciones y no ofrece asesoría personalizada regulada.
 - Los parámetros educativos NO provienen de un modelo validado.
 
-## Siguientes pasos en Codex
+## Siguientes pasos (trabajamos directamente desde ChatGPT)
 1. Crear un proyecto React/Vite o seguir con HTML estático; conservar las funciones de cálculo de perfil y asignación independientes de UI.
 2. Conectar datos de mercado y construir una estrategia cuantitativa con hipótesis previa, reglas de entrada/salida, timing y costos.
 3. Validar su backtest frente al benchmark indicado por los organizadores: KN US Equity Core con código en Lab o SPY en plataforma.
@@ -57,3 +57,19 @@ Este directorio es un **repositorio Git local independiente del repositorio púb
 Ejecuta pruebas con `python -m unittest discover -s tests -v`. El archivo `benchmark_summary.json` se versiona como **resumen del benchmark**, no como rendimiento de nuestra estrategia. Los originales grandes y secretos se excluyen en `.gitignore`.
 
 **Seguridad:** el documento FMP que contiene una clave se ha compartido previamente fuera de un gestor de secretos. Revoca/rota esa clave y restringe los permisos del documento y de la carpeta antes de desplegar servicios o abrir el repositorio a colaboradores. No pegues claves en un chat ni en el navegador.
+
+## Piloto sintético de control de volatilidad (NUEVO)
+- `scripts/benchmark_risk_pilot.py` implementa un experimento **reproducible**, sin dependencias externas, sobre retornos del benchmark, con ventanas pasadas, rebalanceo mensual y costo de negociación hipotético.
+- `research/EXPERIMENTO_PILOTO.md` fija los parámetros, fórmulas, límites y advertencias de interpretación.
+- Ejecutar con `--zip <ruta-archivo-KN-Core.zip>` y revisar `research/benchmark_risk_pilot_LOCAL.json`.
+- **No confundirlo con una estrategia invertible ni con el backtest oficial del reto**: es únicamente un ensayo del motor de control de exposición.
+- `tests/test_benchmark_risk_pilot.py` comprueba límites, determinismo y ausencia básica de anticipación del futuro.
+
+## E1 — Motor de ETFs sectoriales en este chat
+
+- `scripts/sector_etf_backtest.py`: motor de rotación sectorial con cierre ajustado, ranking de momentum, filtro SMA200, ejecución con retraso, pesos del 20% por ETF, efectivo y costos.
+- `scripts/fmp_fetch_prices.py`: importación privada desde la API FMP de precios ajustados por dividendos. **Requiere `FMP_API_KEY` en el entorno local**, sin incluirlo en el código ni en este repositorio.
+- `research/EXPERIMENTO_ETF_SECTORES.md`: hipótesis y reglas registradas antes de obtener los precios individuales de los ETFs.
+- `tests/test_sector_etf_backtest.py` y `tests/test_fmp_fetch_prices.py`: pruebas sobre datos *sintéticos*, **sin** rendimientos reales de ETFs.
+
+Las nuevas herramientas **no** prueban alfa ni ejecutan las bibliotecas de backtest/atribución licenciadas de KaxaNuk. Los CSV privados del proveedor no se guardan en Git. Hasta recibir precios verificados, los resultados de la estrategia están **pendientes**.
