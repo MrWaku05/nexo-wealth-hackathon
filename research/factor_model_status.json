@@ -1,0 +1,11 @@
+{
+  "status": "pending_source_inspection",
+  "source": "Google Drive / KN_US_Equity_Factor_Model.zip",
+  "size_bytes": 652279099,
+  "zip_contents_verified": false,
+  "reason": "Drive connector cannot download files larger than 268435456 bytes",
+  "integration_stage": "attribution_after_backtest",
+  "next_action": "Run scripts/inspect_factor_model.py on local downloaded ZIP and supply the small manifest",
+  "inputs_required": ["strategy_daily_weights", "daily_asset_returns", "benchmark_daily_weights", "factor_csvs", "Attribution Analysis access"],
+  "provenance": "Drive file metadata and KaxaNuk public documentation; not ZIP content"
+}

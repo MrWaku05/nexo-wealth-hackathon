@@ -1,0 +1,38 @@
+# Credenciales: nunca publicar secretos ni archivos de autorización
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*KEY*.docx
+*KEY*.txt
+*_token*
+
+# Datos originales o licenciados: conservar solo localmente
+*.zip
+*.docx
+*.pdf
+data/raw/
+data/providers/
+data/factors/
+data/output/
+KN_US_Equity_Factor_Model*/
+KN_US_Equity_Core*/
+Config/.env
+research/factor_model_manifest.json
+
+# Python y entornos
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# IDE, sistema y artefactos
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/
+dist/
+build/
